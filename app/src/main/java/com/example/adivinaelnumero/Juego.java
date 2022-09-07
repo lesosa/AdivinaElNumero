@@ -13,6 +13,7 @@ public class Juego extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        getNro();
         respuesta=(TextView) findViewById(R.id.txtRes);
 
     }
