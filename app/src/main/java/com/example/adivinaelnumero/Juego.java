@@ -20,6 +20,7 @@ public class Juego extends AppCompatActivity
     boolean verif;
     int textoANroIngresado; //utilizado para parsear el texto ingresado en el edittext
     int resulto;
+    int[] resultado;
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
@@ -44,7 +45,7 @@ public class Juego extends AppCompatActivity
                     }
                     else
                     {
-
+                        Toast.makeText(Juego.this, String.format("Resultado: " + resultado[1]) , Toast.LENGTH_LONG).show();
                     }
                 }
             }
@@ -155,7 +156,7 @@ public class Juego extends AppCompatActivity
     public void calculoRes()
     {
         resulto = 0;
-        int[] resultado = comparoNumero(nroGenerado, nroIngresado);
+        resultado = comparoNumero(nroGenerado, nroIngresado);
         if (resultado[0] == 4)
             resulto = 0;//logica win
         else
