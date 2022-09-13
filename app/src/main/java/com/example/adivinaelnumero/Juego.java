@@ -2,6 +2,8 @@ package com.example.adivinaelnumero;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 
 import androidx.appcompat.app.AppCompatActivity;
 import java.lang.Math;
@@ -12,14 +14,14 @@ public class Juego extends AppCompatActivity {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        getNro();
         respuesta=(TextView) findViewById(R.id.txtRes);
+        getNro();
 
     }
 
     //generar el número
-    public void getNro() {
+    public void getNro()
+    {
         int aux= (int)(Math.random() * 8853 + 1023);
         int[] NroAleatorio= descomposicion(aux).clone(); //descompone el numero generado en un vector
         while( verificoRepeticion(NroAleatorio)){ //si existe repeticiones en ese nro lo vuelve a generar
@@ -28,8 +30,8 @@ public class Juego extends AppCompatActivity {
         }
 
         nroGenerado=NroAleatorio.clone(); //cumple las condiciones entonces lo copia
-        respuesta.setText(Integer.toString(aux));
         respuesta.setVisibility(View.VISIBLE);
+        respuesta.setText(Integer.toString(aux));
 
 
     }
