@@ -2,8 +2,9 @@
 
 **Primera parte**:  
 La App genera un número aleatorio que debe cumplir estas dos premisas:  
-a) Esté entre 1023 y 9876 ambos extremos incluidos.  
-b) No contenga dígitos repetidos.  
+1. Esté entre 1023 y 9876 ambos extremos incluidos.  
+2. No contenga dígitos repetidos.  
+
 El Jugador ingresa un número de cuatro dígitos y el sistema verifica si cumple con las condiciones que debe cumplir el numero generado por el sistema (que esté entre 1023 y 9876
 y que no contenga dígitos repetidos). De no cumplir se le avisará al jugador.
 De ser un número válido, el sistema informará al jugador:  
@@ -19,4 +20,5 @@ Jugador ingresa 9920 Sistema Responde “Número inválido – No puede haber d�
 repetidos”  
 Jugador ingresa 1234 Sistema responde CORRECTO en 4 intentos (el intento inválido no se cuenta).
 La lista con los números que ingresa el jugador y la respuesta debe estar siempre visible.  
-Entrega 27 de setiembre
+
+**Entrega 27 de setiembre**
