@@ -7,6 +7,11 @@ import android.graphics.Color;
 import android.widget.Toast;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import android.widget.ArrayAdapter;
 
 import androidx.appcompat.app.AppCompatActivity;
 import java.lang.Math;
@@ -21,12 +26,18 @@ public class Juego extends AppCompatActivity
     int textoANroIngresado; //utilizado para parsear el texto ingresado en el edittext
     int resulto;
     int[] resultado;
+    ArrayList<String> listaIntentosFallidos=new ArrayList<>();
+    ListView listIF;
+
+
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         respuesta=(TextView) findViewById(R.id.txtRes);
         getNro();
+
+        listIF = (ListView) findViewById(R.id.historialVerificaciones);
 
         botonVerifica = (Button) findViewById(R.id.buttonVerificar);
         botonVerifica.setOnClickListener(new View.OnClickListener(){ //verifica eL nro ingresado
@@ -45,7 +56,10 @@ public class Juego extends AppCompatActivity
                     }
                     else
                     {
-                        Toast.makeText(Juego.this, String.format("Resultado: " + resultado[1]) , Toast.LENGTH_LONG).show();
+                        listaIntentosFallidos.add("Resultado: " + resultado[1]);
+                        ArrayAdapter<String> adaptador = new ArrayAdapter<String>(Juego.this, android.R.layout.simple_list_item_1, listaIntentosFallidos);
+                        listIF.setAdapter(adaptador);
+
                     }
                 }
             }
