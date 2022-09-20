@@ -69,6 +69,7 @@ public class Juego extends AppCompatActivity
                         respuesta.setVisibility(View.VISIBLE);
                         botonVerifica.setVisibility(View.INVISIBLE);
                         botonReinicia.setVisibility(View.VISIBLE);
+                        textoIngresado.setVisibility(View.INVISIBLE);
 
                     }
                     else
