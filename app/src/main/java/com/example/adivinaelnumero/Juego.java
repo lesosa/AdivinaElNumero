@@ -1,6 +1,8 @@
 package com.example.adivinaelnumero;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -19,6 +21,7 @@ public class Juego extends AppCompatActivity
 {
     TextView respuesta;
     Button botonVerifica;
+    Button botonReinicia;
     int[] nroGenerado;
     int[] nroIngresado;
     EditText textoIngresado;
@@ -29,15 +32,25 @@ public class Juego extends AppCompatActivity
     ArrayList<String> listaIntentosFallidos=new ArrayList<>();
     ListView listIF;
 
-
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         respuesta=(TextView) findViewById(R.id.txtRes);
         getNro();
+        InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
 
         listIF = (ListView) findViewById(R.id.historialVerificaciones);
+
+        botonReinicia = (Button) findViewById(R.id.buttonReiniciar);
+        botonReinicia.setOnClickListener(new View.OnClickListener() {
+                                             @Override
+                                             public void onClick(View v)
+                                             {
+                                                 finish();
+                                                 startActivity(getIntent());
+                                             }
+                                         });
 
         botonVerifica = (Button) findViewById(R.id.buttonVerificar);
         botonVerifica.setOnClickListener(new View.OnClickListener(){ //verifica eL nro ingresado
@@ -53,12 +66,17 @@ public class Juego extends AppCompatActivity
                     if(resulto==0)
                     {
                         Toast.makeText(Juego.this, "Ganaste!", Toast.LENGTH_LONG).show();
+                        respuesta.setVisibility(View.VISIBLE);
+                        botonVerifica.setVisibility(View.INVISIBLE);
+                        botonReinicia.setVisibility(View.VISIBLE);
+
                     }
                     else
                     {
                         listaIntentosFallidos.add("B: " + resultado[0] + " - R: "+ resultado[1]);
                         ArrayAdapter<String> adaptador = new ArrayAdapter<String>(Juego.this, android.R.layout.simple_list_item_1, listaIntentosFallidos);
                         listIF.setAdapter(adaptador);
+                        imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
 
                     }
                 }
@@ -78,8 +96,9 @@ public class Juego extends AppCompatActivity
         }
 
         nroGenerado=NroAleatorio.clone(); //cumple las condiciones entonces lo copia
-        respuesta.setVisibility(View.VISIBLE);
+        respuesta.setVisibility(View.INVISIBLE);
         respuesta.setText(Integer.toString(aux));
+
 
 
     }
@@ -148,25 +167,23 @@ public class Juego extends AppCompatActivity
         }
         return bien;
     }
+
     public int calculoRegular(int[] ng, int[] nc)
     {
-        if(ng[0]==nc[1]||ng[0]==nc[2]||ng[0]==nc[3]){
-            if(ng[1]==nc[0]||ng[1]==nc[2]||ng[1]==nc[3]) {
-                if (ng[2] == nc[0] || ng[2] == nc[1] || ng[2] == nc[3]) {
-                    if (ng[3] == nc[0] || ng[3] == nc[1] || ng[3] == nc[2])
-                        return 4;
-                    else
-                        return 3;
+        int regular=0;
+        for(int i=0; i<(ng.length);i++){
+            for(int j=0;j<(nc.length);j++){
+                if(i!=j){
+                    if(ng [i] == nc[j]) {
+                        regular++;
+                    }
                 }
-                else
-                    return 2;
+
             }
-            else
-                return 1;
         }
-        else
-            return 0;
+        return regular;
     }
+
     public void calculoRes()
     {
         resulto = 0;
