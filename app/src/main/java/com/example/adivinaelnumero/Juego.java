@@ -56,7 +56,7 @@ public class Juego extends AppCompatActivity
                     }
                     else
                     {
-                        listaIntentosFallidos.add("Resultado: " + resultado[1]);
+                        listaIntentosFallidos.add("B: " + resultado[0] + " - R: "+ resultado[1]);
                         ArrayAdapter<String> adaptador = new ArrayAdapter<String>(Juego.this, android.R.layout.simple_list_item_1, listaIntentosFallidos);
                         listIF.setAdapter(adaptador);
 
