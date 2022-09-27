@@ -4,15 +4,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.widget.Toast;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+
 import android.widget.ArrayAdapter;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,7 +32,7 @@ public class Juego extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_juego);
         respuesta=(TextView) findViewById(R.id.txtRes);
         getNro();
         InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
