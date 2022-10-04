@@ -1,5 +1,11 @@
 package com.example.adivinaelnumero;
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -13,6 +19,8 @@ import java.util.ArrayList;
 import android.widget.ArrayAdapter;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationManagerCompat;
+
 import java.lang.Math;
 public class Juego extends AppCompatActivity
 {
@@ -68,6 +76,15 @@ public class Juego extends AppCompatActivity
                         botonReinicia.setVisibility(View.VISIBLE);
                         textoIngresado.setVisibility(View.INVISIBLE);
 
+                        Intent intent = new Intent(Juego.this, ReminderBroadcast.class);
+                        PendingIntent pendingIntent = PendingIntent.getBroadcast( Juego.this, 0, intent, 0);
+
+                        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+
+                        long timeAtButtonClick = System.currentTimeMillis();
+                        long tenSecondsInMillis = 1000*10;
+                        alarmManager.set(AlarmManager.RTC_WAKEUP, timeAtButtonClick+tenSecondsInMillis,pendingIntent);
+
                     }
                     else
                     {
@@ -81,6 +98,21 @@ public class Juego extends AppCompatActivity
             }
         });
 
+    }
+
+    private void createNotificationChannel(){
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+        {
+            CharSequence name = "TSLReminderChannel";
+            String description = "Channel for TSL Reminder";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("notifyTSL", name, importance);
+            channel.setDescription(description);
+
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+
+        }
     }
 
     //generar el número

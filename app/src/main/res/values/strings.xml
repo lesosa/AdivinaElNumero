@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AdivinaElNumero</string>
+    <string name="title_notification">title</string>
 </resources>
