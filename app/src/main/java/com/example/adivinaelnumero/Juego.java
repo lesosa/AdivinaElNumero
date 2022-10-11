@@ -42,6 +42,7 @@ public class Juego extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_juego);
         respuesta=(TextView) findViewById(R.id.txtRes);
+        createNotificationChannel();
         getNro();
         InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
 
