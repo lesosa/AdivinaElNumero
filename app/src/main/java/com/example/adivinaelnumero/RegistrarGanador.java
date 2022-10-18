@@ -1,30 +1,56 @@
 package com.example.adivinaelnumero;
 
 import android.content.Context;
+import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class RegistrarGanador extends AppCompatActivity {
-    Button botonRegistrar;
+
+    Button buttonRegistrar;
     EditText dniIngresado;
     EditText nombreIngresado;
+    TextView resultIntentos;
 
-    int intentos = 0;
 
-    String dni = dniIngresado.getText().toString();
-    String nombre = nombreIngresado.getText().toString();
-    boolean alta = OperacionesDB.Alta(this, dni,nombre,intentos);
-    CharSequence textOk = "Datos del usuario registrados correctamente";
-    CharSequence textNok = "Datos del usuario no se pudieron registrar";
-    if(alta)
+
+    protected void onCreate(Bundle savedInstanceState)
     {
-        Toast.makeText(this,textOk,Toast.LENGTH_SHORT);
-    }
-    else
-    {
-        Toast.makeText(this,textNok,Toast.LENGTH_SHORT);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_ganador);
+        int intentos = getIntent().getIntExtra("Intentos",0);
+
+        String dni = dniIngresado.getText().toString();
+        String nombre = nombreIngresado.getText().toString();
+
+        resultIntentos = findViewById(R.id.txtVResultadoIntentos);
+        resultIntentos.setText(intentos);
+
+        CharSequence textOk = "Datos del usuario registrados correctamente";
+        CharSequence textNok = "Datos del usuario no se pudieron registrar";
+
+        buttonRegistrar = (Button) findViewById(R.id.buttonRegistrar);
+        buttonRegistrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                boolean alta = OperacionesDB.Alta(RegistrarGanador.this, dni,nombre,intentos);
+                if(alta)
+                {
+                    Toast.makeText(RegistrarGanador.this,textOk,Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(RegistrarGanador.this,textNok,Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
     }
 }

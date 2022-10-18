@@ -26,9 +26,8 @@
         android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.543"
+        app:layout_constraintHorizontal_bias="0.709"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtRes"
         app:layout_constraintVertical_bias="0.381" />
 
     <EditText
@@ -40,27 +39,53 @@
         android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.543"
+        app:layout_constraintHorizontal_bias="0.707"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtRes"
         app:layout_constraintVertical_bias="0.381" />
 
     <TextView
         android:id="@+id/txtVdni"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="dni"
+        android:layout_marginTop="44dp"
+        android:text="DNI"
         android:textSize="34sp"
-        tools:layout_editor_absoluteX="33dp"
-        tools:layout_editor_absoluteY="138dp" />
+        app:layout_constraintEnd_toStartOf="@+id/txtDni"
+        app:layout_constraintHorizontal_bias="0.562"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtVnombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="nombre"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:text="Nombre"
         android:textSize="34sp"
-        tools:layout_editor_absoluteX="-1dp"
-        tools:layout_editor_absoluteY="210dp" />
+        app:layout_constraintEnd_toStartOf="@+id/txtNombre"
+        app:layout_constraintTop_toBottomOf="@+id/txtVdni" />
+
+    <TextView
+        android:id="@+id/txtIntentos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="116dp"
+        android:text="Intentos"
+        android:textSize="34sp"
+        app:layout_constraintTop_toBottomOf="@+id/txtVdni"
+        tools:layout_editor_absoluteX="23dp" />
+
+    <TextView
+        android:id="@+id/txtVResultadoIntentos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="TextView"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.291"
+        app:layout_constraintStart_toEndOf="@+id/txtIntentos"
+        app:layout_constraintTop_toBottomOf="@+id/txtNombre" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

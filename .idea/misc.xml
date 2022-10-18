@@ -3,13 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/fatop/AndroidStudioProjects/AdivinaElNumero/app/src/main/res/layout/activity_ganador.xml" value="0.269140625" />
+        <entry key="..\:/Users/fatop/AndroidStudioProjects/AdivinaElNumero/app/src/main/res/layout/activity_juego.xml" value="0.25" />
         <entry key="..\:/Users/fatop/AndroidStudioProjects/AdivinaElNumero/app/src/main/res/layout/activity_main.xml" value="0.5" />
         <entry key="..\:/Users/fatop/AndroidStudioProjects/AdivinaElNumero/app/src/main/res/layout/notification_activity.xml" value="0.35052083333333334" />
         <entry key="..\:/Users/fatop/AndroidStudioProjects/AdivinaElNumero/app/src/main/res/xml/notification_activity.xml" value="0.3494791666666667" />
-        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_ganador.xml" value="0.16597222222222222" />
-        <entry key="app/src/main/res/layout/activity_juego.xml" value="0.2212962962962963" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2212962962962963" />
       </map>
     </option>
   </component>

@@ -46,8 +46,8 @@
 
     <ListView
         android:id="@+id/historialVerificaciones"
-        android:layout_width="134dp"
-        android:layout_height="731dp"
+        android:layout_width="133dp"
+        android:layout_height="397dp"
         android:fastScrollAlwaysVisible="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -67,5 +67,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/buttonRegistrar"
+        android:layout_width="133dp"
+        android:layout_height="41dp"
+        android:text="Registrate"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonVerificar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonReiniciar"
+        app:layout_constraintVertical_bias="0.305" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

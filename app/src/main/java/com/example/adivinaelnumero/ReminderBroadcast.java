@@ -13,7 +13,7 @@ public class ReminderBroadcast extends BroadcastReceiver
     @Override
     public void onReceive(Context context, Intent intent) {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "notifyTSL")
-                .setSmallIcon(R.drawable.ic_launcher_background)
+                .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle("Adivina otro numero!")
                 .setContentText("Dale, volve a jugar!")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);

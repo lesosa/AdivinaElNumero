@@ -27,6 +27,7 @@ public class Juego extends AppCompatActivity
     TextView respuesta;
     Button botonVerifica;
     Button botonReinicia;
+    Button botonRegistrate;
     int[] nroGenerado;
     int[] nroIngresado;
     EditText textoIngresado;
@@ -36,12 +37,16 @@ public class Juego extends AppCompatActivity
     int[] resultado;
     ArrayList<String> listaIntentosFallidos=new ArrayList<>();
     ListView listIF;
+    int intentos = 0;
 
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_juego);
         respuesta=(TextView) findViewById(R.id.txtRes);
+
+        botonRegistrate = (Button) findViewById(R.id.buttonRegistrar);
+        botonRegistrate.setVisibility(View.INVISIBLE);
         createNotificationChannel();
         getNro();
         InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
@@ -69,13 +74,26 @@ public class Juego extends AppCompatActivity
                 if(verif == true)
                 {
                     calculoRes();
-                    if(resulto==0)
+                    if(resulto==0) //GANO
                     {
                         Toast.makeText(Juego.this, "Ganaste!", Toast.LENGTH_LONG).show();
                         respuesta.setVisibility(View.VISIBLE);
                         botonVerifica.setVisibility(View.INVISIBLE);
                         botonReinicia.setVisibility(View.VISIBLE);
                         textoIngresado.setVisibility(View.INVISIBLE);
+                        botonRegistrate.setVisibility(View.VISIBLE);
+
+                        botonRegistrate.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v)
+                            {
+                                Intent intent = new Intent(Juego.this, RegistrarGanador.class);
+                                int intento = intentos;
+                                intent.putExtra("Intentos", intento);
+                                startActivity(intent);
+                            }
+                        });
+
 
                         Intent intent = new Intent(Juego.this, ReminderBroadcast.class);
                         PendingIntent pendingIntent = PendingIntent.getBroadcast( Juego.this, 0, intent, 0);
@@ -87,8 +105,9 @@ public class Juego extends AppCompatActivity
                         alarmManager.set(AlarmManager.RTC_WAKEUP, timeAtButtonClick+tenSecondsInMillis,pendingIntent);
 
                     }
-                    else
+                    else //SIGUE JUGANDO
                     {
+                        intentos++;
                         listaIntentosFallidos.add("B: " + resultado[0] + " - R: "+ resultado[1]);
                         ArrayAdapter<String> adaptador = new ArrayAdapter<String>(Juego.this, android.R.layout.simple_list_item_1, listaIntentosFallidos);
                         listIF.setAdapter(adaptador);
@@ -101,7 +120,7 @@ public class Juego extends AppCompatActivity
 
     }
 
-    private void createNotificationChannel(){
+    public void createNotificationChannel(){
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
         {
             CharSequence name = "TSLReminderChannel";
@@ -127,7 +146,7 @@ public class Juego extends AppCompatActivity
         }
 
         nroGenerado=NroAleatorio.clone(); //cumple las condiciones entonces lo copia
-        respuesta.setVisibility(View.INVISIBLE);
+        respuesta.setVisibility(View.VISIBLE);
         respuesta.setText(Integer.toString(aux));
 
 
