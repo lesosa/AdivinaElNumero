@@ -16,6 +16,9 @@ public class RegistrarGanador extends AppCompatActivity {
     EditText dniIngresado;
     EditText nombreIngresado;
     TextView resultIntentos;
+    String dni;
+    String nombre;
+    int intentos = 0;
 
 
 
@@ -23,10 +26,10 @@ public class RegistrarGanador extends AppCompatActivity {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ganador);
-        int intentos = getIntent().getIntExtra("Intentos",0);
+        intentos = getIntent().getIntExtra("Intentos",0);
 
-        String dni = dniIngresado.getText().toString();
-        String nombre = nombreIngresado.getText().toString();
+        dni = dniIngresado.getText().toString();
+        nombre = nombreIngresado.getText().toString();
 
         resultIntentos = findViewById(R.id.txtVResultadoIntentos);
         resultIntentos.setText(intentos);
