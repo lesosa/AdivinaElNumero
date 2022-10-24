@@ -88,8 +88,7 @@ public class Juego extends AppCompatActivity
                             public void onClick(View v)
                             {
                                 Intent intent = new Intent(Juego.this, RegistrarGanador.class);
-                                int intento = intentos;
-                                intent.putExtra("Intentos", intento);
+                                intent.putExtra("NroIntentos", intentos);
                                 startActivity(intent);
                             }
                         });

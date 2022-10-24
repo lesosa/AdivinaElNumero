@@ -9,6 +9,7 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity
 {
     Button btnJugar;
+    Button btnPuntajes;
 
 
     @Override
@@ -25,6 +26,15 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, Juego.class);
                 startActivity(intent);
+            }
+        });
+
+        btnPuntajes= (Button) findViewById(R.id.btnPuntajes);
+        btnPuntajes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent2 = new Intent(MainActivity.this, Score.class);
+                startActivity(intent2);
             }
         });
 
