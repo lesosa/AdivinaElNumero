@@ -22,3 +22,13 @@ Jugador ingresa 1234 Sistema responde CORRECTO en 4 intentos (el intento inváli
 La lista con los números que ingresa el jugador y la respuesta debe estar siempre visible.  
 
 **Entrega 27 de setiembre**
+
+**Segunda Parte**:
+Investigar Envío de Notificaciones a una App de Android.
+Agregar envío de notificaciones donde consideren convenientes.
+
+**Tercera Parte**:
+Por cada juego se registra en la base de datos el DNI, el Nombre, y la cantidad de intentos.
+El score se muestra ordenado por cantidad de intentos de menor a mayor.
+
+**Entrega 25 de octubre**
