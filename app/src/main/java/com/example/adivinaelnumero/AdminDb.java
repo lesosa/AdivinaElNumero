@@ -36,6 +36,28 @@ public class AdminDb  extends SQLiteOpenHelper{
 
     }
 
+    public boolean buscarYActualizar(int d, int nuevoIntento)
+    {
+        ContentValues registro= new ContentValues();
+        SQLiteDatabase db= this.getWritableDatabase();
+        boolean loEncontro=false;
+        String q="SELECT intentos FROM ganadores WHERE dni="+"'"+d+"'";
+        Cursor cursor= db.rawQuery(q,null);
+        if(cursor.moveToFirst()) {
+
+            int intentosGuardados= cursor.getInt(0);
+
+            if (nuevoIntento<=intentosGuardados)
+            {
+                db.execSQL("UPDATE ganadores SET intentos="+nuevoIntento+" WHERE dni="+"'"+d+"'");
+                db.close();
+            }
+
+            loEncontro=true;
+        }
+        return loEncontro;
+    }
+
 
 
 }

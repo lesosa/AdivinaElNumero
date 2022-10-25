@@ -145,12 +145,11 @@ public class Juego extends AppCompatActivity
         }
 
         nroGenerado=NroAleatorio.clone(); //cumple las condiciones entonces lo copia
-        respuesta.setVisibility(View.VISIBLE);
+        respuesta.setVisibility(View.INVISIBLE);
         respuesta.setText(Integer.toString(aux));
 
-
-
     }
+
     public int[] descomposicion(int nro){
         int resto, um, cen, dec, uni;
         int[] nrodesc;

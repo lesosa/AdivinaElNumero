@@ -62,25 +62,37 @@ public class RegistrarGanador extends AppCompatActivity {
         AdminDb admin= new AdminDb(this,null);
         SQLiteDatabase db= admin.getWritableDatabase();
 
-        String usuario = etNom.getText().toString();
-        if(!usuario.isEmpty())
+        boolean loEncontro = admin.buscarYActualizar(dni, intentos);
+
+        if(loEncontro)
         {
+            Toast.makeText(RegistrarGanador.this, "Score actualizado",Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(RegistrarGanador.this, MainActivity.class);
+            startActivity(i);
 
-                        ContentValues registro= new ContentValues();
-                        registro.put("dni", dni);
-                        registro.put("nombre", usuario);
-                        registro.put("intentos", intentos);
-                        db.insert("ganadores", null, registro);
-                        db.close();
-
-                        Toast.makeText(RegistrarGanador.this, "Usuario agregado",Toast.LENGTH_SHORT).show();
-
-                        Intent i = new Intent(RegistrarGanador.this, MainActivity.class);
-                        startActivity(i);//se sale
         }
         else
-        {
-                         Toast.makeText(RegistrarGanador.this, "Debe ingresar un nombre de usuario",Toast.LENGTH_LONG).show();
-        }
+            {
+                String usuario = etNom.getText().toString();
+                if(!usuario.isEmpty())
+                {
+
+                    ContentValues registro= new ContentValues();
+                    registro.put("dni", dni);
+                    registro.put("nombre", usuario);
+                    registro.put("intentos", intentos);
+                    db.insert("ganadores", null, registro);
+                    db.close();
+
+                    Toast.makeText(RegistrarGanador.this, "Usuario agregado",Toast.LENGTH_SHORT).show();
+
+                    Intent i = new Intent(RegistrarGanador.this, MainActivity.class);
+                    startActivity(i);//se sale
+                }
+                else
+                {
+                    Toast.makeText(RegistrarGanador.this, "Debe ingresar un nombre de usuario",Toast.LENGTH_LONG).show();
+                }
+            }
         }
 }
